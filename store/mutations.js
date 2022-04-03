@@ -1,6 +1,11 @@
 import initialState from './state'
 // commitから
 export default {
+  saveTrees (state, trees) {
+    const setjson = JSON.stringify(trees)
+    localStorage.setItem('trees', setjson)
+    state.trees = trees
+  },
   RESET_STORE: (state) => {
     Object.assign(state, initialState())
   },

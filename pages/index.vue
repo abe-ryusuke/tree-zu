@@ -34,8 +34,7 @@ export default {
   name: 'IndexPage',
   data () {
     return {
-      title: '',
-      insertData: {}
+      title: ''
     }
   },
   head () {
@@ -44,10 +43,18 @@ export default {
     }
   },
   computed: {
+    insertData: {
+      get () {
+        return this.$store.state.trees
+      },
+      set () {
+        this.$store.dispatch('saveTrees')
+      }
+    }
   },
   mounted () {
-    const getjson = localStorage.getItem('trees')
-    this.insertData = JSON.parse(getjson)
+    // const getjson = localStorage.getItem('trees')
+    // this.insertData = JSON.parse(getjson)
   },
   methods: {
     template01Event (data) {
@@ -67,8 +74,9 @@ export default {
       this.savestrage()
     },
     savestrage () {
-      const setjson = JSON.stringify(this.insertData)
-      localStorage.setItem('trees', setjson)
+      this.$store.commit('saveTrees', this.insertData)
+      // const setjson = JSON.stringify(this.insertData)
+      // localStorage.setItem('trees', setjson)
     }
   }
 }
