@@ -35,12 +35,7 @@ export default {
   data () {
     return {
       title: '',
-      insertData: {
-        tree01: '',
-        tree02: '',
-        tree03: '',
-        tree04: ''
-      }
+      insertData: {}
     }
   },
   head () {
@@ -50,18 +45,30 @@ export default {
   },
   computed: {
   },
+  mounted () {
+    const getjson = localStorage.getItem('trees')
+    this.insertData = JSON.parse(getjson)
+  },
   methods: {
     template01Event (data) {
       this.insertData.tree01 = data
+      this.savestrage()
     },
     template02Event (data) {
       this.insertData.tree02 = data
+      this.savestrage()
     },
     template03Event (data) {
       this.insertData.tree03 = data
+      this.savestrage()
     },
     template04Event (data) {
       this.insertData.tree04 = data
+      this.savestrage()
+    },
+    savestrage () {
+      const setjson = JSON.stringify(this.insertData)
+      localStorage.setItem('trees', setjson)
     }
   }
 }
@@ -76,7 +83,7 @@ export default {
 }
 #pageTitle {
   width: 980px;
-  margin: 50px auto 40px auto;
+  margin: 50px auto 30px auto;
   > input {
     font-size: 1.5rem;
     font-weight: bold;
