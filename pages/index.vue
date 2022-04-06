@@ -66,7 +66,6 @@ export default {
   },
   methods: {
     template01Event (data) {
-      console.log(data)
       this.insertData.tree01 = data
       this.savestrage()
     },
