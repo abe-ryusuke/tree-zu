@@ -8,19 +8,19 @@
         <TreeTemplate :trees="insertData.tree01" @uploaddata="template01Event" />
       </div>
       <div>
-        <TreeLines />
+        <TreeLines :lines="insertData.line01" @uploadline="line01Event" />
       </div>
       <div>
         <TreeTemplate :trees="insertData.tree02" @uploaddata="template02Event" />
       </div>
       <div>
-        <TreeLines />
+        <TreeLines :lines="insertData.line02" @uploadline="line02Event" />
       </div>
       <div>
         <TreeTemplate :trees="insertData.tree03" @uploaddata="template03Event" />
       </div>
       <div>
-        <TreeLines />
+        <TreeLines :lines="insertData.line03" @uploadline="line03Event" />
       </div>
       <div>
         <TreeTemplate :trees="insertData.tree04" @uploaddata="template04Event" />
@@ -39,7 +39,10 @@ export default {
         tree01: [],
         tree02: [],
         tree03: [],
-        tree04: []
+        tree04: [],
+        line01: [],
+        line02: [],
+        line03: []
       }
     }
   },
@@ -49,16 +52,6 @@ export default {
     }
   },
   computed: {
-    /*
-    insertData: {
-      get () {
-        return this.$store.state.trees
-      },
-      set () {
-        this.$store.dispatch('saveTrees')
-      }
-    }
-    */
   },
   mounted () {
     const getjson = localStorage.getItem('trees')
@@ -81,8 +74,19 @@ export default {
       this.insertData.tree04 = data
       this.savestrage()
     },
+    line01Event (data) {
+      this.insertData.line01 = data
+      this.savestrage()
+    },
+    line02Event (data) {
+      this.insertData.line02 = data
+      this.savestrage()
+    },
+    line03Event (data) {
+      this.insertData.line03 = data
+      this.savestrage()
+    },
     savestrage () {
-      // this.$store.commit('saveTrees', this.insertData)
       const setjson = JSON.stringify(this.insertData)
       localStorage.setItem('trees', setjson)
     }

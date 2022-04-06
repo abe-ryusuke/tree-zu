@@ -1,17 +1,17 @@
 <template>
   <div id="treelines">
-    <div v-for="treepoint in treesPoint" :key="treepoint.id" :class="treepoint.value">
-      <p @click="changeLine(treepoint)">
-        <template v-if="treepoint.value === 'none'">
+    <div v-for="line in lines" :key="line.id" :class="line.value">
+      <p @click="changeLine(line)">
+        <template v-if="line.value === 'none'">
           <span class="none" />
         </template>
-        <template v-else-if="treepoint.value === 'line'">
+        <template v-else-if="line.value === 'line'">
           <span class="line">─────</span>
         </template>
-        <template v-else-if="treepoint.value === 'under'">
+        <template v-else-if="line.value === 'under'">
           <span class="under">   │<br>   │<br>   │<br>   └──</span>
         </template>
-        <template v-else-if="treepoint.value === 'vertical'">
+        <template v-else-if="line.value === 'vertical'">
           <span class="vertical">   │<br>   │<br>   │<br>   │<br>   </span>
         </template>
         <template v-else>
@@ -24,6 +24,53 @@
 <script>
 export default {
   name: 'TreeLines',
+  props: {
+    lines: {
+      type: Array,
+      // default: () => ({})
+      default: () => [
+        {
+          id: 1,
+          value: 'none'
+        },
+        {
+          id: 2,
+          value: 'none'
+        },
+        {
+          id: 3,
+          value: 'none'
+        },
+        {
+          id: 4,
+          value: 'none'
+        },
+        {
+          id: 5,
+          value: 'none'
+        },
+        {
+          id: 6,
+          value: 'none'
+        },
+        {
+          id: 7,
+          value: 'none'
+        },
+        {
+          id: 8,
+          value: 'none'
+        },
+        {
+          id: 9,
+          value: 'none'
+        },
+        {
+          id: 10,
+          value: 'none'
+        }]
+    }
+  },
   data () {
     return {
       treesPoint: [
@@ -84,6 +131,7 @@ export default {
       } else if (value.value === 'none') {
         value.value = 'line'
       }
+      this.$emit('uploadline', this.lines)
     }
   }
 }
