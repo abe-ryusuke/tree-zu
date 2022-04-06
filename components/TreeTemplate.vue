@@ -13,9 +13,11 @@
 <script>
 export default {
   name: 'TreeTemplate',
-  data () {
-    return {
-      trees: [
+  props: {
+    trees: {
+      type: Array,
+      // default: () => ({})
+      default: () => [
         {
           id: 1,
           value: 'pagetitle'
@@ -55,15 +57,14 @@ export default {
         {
           id: 10,
           value: ''
-        }
-      ]
+        }]
+    }
+  },
+  data () {
+    return {
     }
   },
   computed: {
-    maxcount () {
-      const data = 1
-      return data
-    }
   },
   methods: {
     changeTree () {

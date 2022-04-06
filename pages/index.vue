@@ -5,25 +5,25 @@
     </h1>
     <div id="tree_container">
       <div>
-        <TreeTemplate @uploaddata="template01Event" />
+        <TreeTemplate :trees="insertData.tree01" @uploaddata="template01Event" />
       </div>
       <div>
         <TreeLines />
       </div>
       <div>
-        <TreeTemplate @uploaddata="template02Event" />
+        <TreeTemplate :trees="insertData.tree02" @uploaddata="template02Event" />
       </div>
       <div>
         <TreeLines />
       </div>
       <div>
-        <TreeTemplate @uploaddata="template03Event" />
+        <TreeTemplate :trees="insertData.tree03" @uploaddata="template03Event" />
       </div>
       <div>
         <TreeLines />
       </div>
       <div>
-        <TreeTemplate @uploaddata="template04Event" />
+        <TreeTemplate :trees="insertData.tree04" @uploaddata="template04Event" />
       </div>
     </div>
   </div>
@@ -34,7 +34,13 @@ export default {
   name: 'IndexPage',
   data () {
     return {
-      title: ''
+      title: '',
+      insertData: {
+        tree01: [],
+        tree02: [],
+        tree03: [],
+        tree04: []
+      }
     }
   },
   head () {
@@ -43,6 +49,7 @@ export default {
     }
   },
   computed: {
+    /*
     insertData: {
       get () {
         return this.$store.state.trees
@@ -51,13 +58,15 @@ export default {
         this.$store.dispatch('saveTrees')
       }
     }
+    */
   },
   mounted () {
-    // const getjson = localStorage.getItem('trees')
-    // this.insertData = JSON.parse(getjson)
+    const getjson = localStorage.getItem('trees')
+    this.insertData = JSON.parse(getjson)
   },
   methods: {
     template01Event (data) {
+      console.log(data)
       this.insertData.tree01 = data
       this.savestrage()
     },
@@ -74,9 +83,9 @@ export default {
       this.savestrage()
     },
     savestrage () {
-      this.$store.commit('saveTrees', this.insertData)
-      // const setjson = JSON.stringify(this.insertData)
-      // localStorage.setItem('trees', setjson)
+      // this.$store.commit('saveTrees', this.insertData)
+      const setjson = JSON.stringify(this.insertData)
+      localStorage.setItem('trees', setjson)
     }
   }
 }

@@ -6,6 +6,11 @@ export default {
     localStorage.setItem('trees', setjson)
     state.trees = trees
   },
+  loadTrees (state, trees) {
+    const getjson = localStorage.getItem(trees)
+    const obj = JSON.parse(getjson)
+    state.trees = obj
+  },
   RESET_STORE: (state) => {
     Object.assign(state, initialState())
   },
