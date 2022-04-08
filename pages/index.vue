@@ -35,15 +35,7 @@ export default {
   data () {
     return {
       title: '',
-      insertData: {
-        tree01: [],
-        tree02: [],
-        tree03: [],
-        tree04: [],
-        line01: [],
-        line02: [],
-        line03: []
-      }
+      insertData: {}
     }
   },
   head () {
@@ -54,11 +46,11 @@ export default {
   computed: {
   },
   mounted () {
-    const getjson = localStorage.getItem('trees')
-    this.insertData = JSON.parse(getjson)
+    this.loadstrage()
   },
   methods: {
     template01Event (data) {
+      // console.log(data)
       this.insertData.tree01 = data
       this.savestrage()
     },
@@ -89,6 +81,30 @@ export default {
     savestrage () {
       const setjson = JSON.stringify(this.insertData)
       localStorage.setItem('trees', setjson)
+      // const getjson = localStorage.getItem('trees')
+      // this.insertData = JSON.parse(getjson)
+    },
+    loadstrage () {
+      const getjson = localStorage.getItem('trees')
+      if (getjson) {
+        this.insertData = JSON.parse(getjson)
+      }
+      /*
+      if (!this.insertData) {
+        if (this.insertData.tree01 == null) {
+          this.template01Event()
+        }
+        if (!this.insertData.tree02) {
+          this.template02Event()
+        }
+        if (!this.insertData.tree03) {
+          this.template03Event()
+        }
+        if (!this.insertData.tree04) {
+          this.template04Event()
+        }
+      }
+       */
     }
   }
 }
