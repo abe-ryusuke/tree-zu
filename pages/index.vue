@@ -92,6 +92,7 @@ export default {
       const getjson = localStorage.getItem('trees')
       if (getjson) {
         this.insertData = JSON.parse(getjson)
+        this.title = this.insertData.title
       }
       /*
       if (!this.insertData) {
