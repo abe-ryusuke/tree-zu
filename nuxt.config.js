@@ -1,14 +1,14 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s | サイト名',
+    titleTemplate: '%s | Website tree diagram creation site without stress',
     htmlAttrs: {
       lang: 'ja'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'クリックと文字入力だけでWEBサイトのツリー図を作成できます。' || '' }
+      { hid: 'description', name: 'description', content: 'You can create a tree diagram of your website just by clicking and entering characters.' || '' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
