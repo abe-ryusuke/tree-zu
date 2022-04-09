@@ -1,7 +1,8 @@
 <template>
   <div>
+    <GlobalHeader />
     <h1 id="pageTitle">
-      <input v-model="title" type="text" class="textinput" placeholder="title">
+      <input v-model="title" type="text" class="textinput" placeholder="title" @change="changeTitle">
     </h1>
     <div id="tree_container">
       <div>
@@ -49,8 +50,11 @@ export default {
     this.loadstrage()
   },
   methods: {
+    changeTitle () {
+      this.insertData.title = this.title
+      this.savestrage()
+    },
     template01Event (data) {
-      // console.log(data)
       this.insertData.tree01 = data
       this.savestrage()
     },
