@@ -1,7 +1,7 @@
 <template>
-  <div id="header">
+  <div v-if="headerView" id="header" @click="changeView">
     <div>
-      <h1>555</h1>
+      <h1>WEBサイト ツリー図作成</h1>
     </div>
   </div>
 </template>
@@ -10,11 +10,12 @@ export default {
   name: 'GlobalHeader',
   data () {
     return {
-      veiw: ''
+      headerView: true
     }
   },
   methods: {
-    changeLine () {
+    changeView () {
+      this.headerView = false
     }
   }
 }
@@ -31,6 +32,24 @@ export default {
       font-size: 20px;
       text-align:center;
       font-weight: bold;
+      margin: 0px 0px 0px 0px;
+    }
+    > ul {
+      margin: 0px 0px 30px 0px;
+      li {
+        line-height: 160%;
+        color: #fff;
+        list-style: disc;
+        font-size: 14px;
+        a {
+          color: #fff;
+        }
+      }
+    }
+    > p {
+      line-height: 160%;
+      color: #fff;
+      text-align: center;
     }
   }
 
