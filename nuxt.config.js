@@ -22,14 +22,6 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
   ],
-  googleAnalytics: {
-    id: 'G-6Q141R2JZD'
-  },
-  publicRuntimeConfig: {
-    googleAnalytics: {
-      id: 'G-6Q141R2JZD'
-    }
-  },
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -37,7 +29,10 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    '@nuxtjs/google-analytics'
+    ['@nuxtjs/google-gtag', {
+      id: 'G-6Q141R2JZD',
+      debug: true
+    }]
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
